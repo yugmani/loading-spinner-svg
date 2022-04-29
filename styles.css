@@ -1,0 +1,37 @@
+:root {
+  --stroke-width: 6px;
+  --size: 64px;
+  --radius: calc(var(--size) / 2 - var(--stroke-width) / 2);
+  --offset: calc(2 * 3.14 * var(--radius));
+  --duration: 1.33s;
+}
+
+body {
+  background: orange;
+}
+
+.spinner {
+  width: calc(var(--radius) * 2 + var(--stroke-width));
+  height: calc(var(--radius) * 2 + var(--stroke-width));
+}
+
+.spinner > circle {
+  fill: transparent;
+  stroke-width: var(--stroke-width);
+  animation: colors calc(var(--duration) * 4) ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+    stroke: #3b82f6;
+  }
+  25% {
+    stroke: #ef4444;
+  }
+  50% {
+    stroke: #eab308;
+  }
+  100% {
+    stroke: #3b82f6;
+  }
+}
