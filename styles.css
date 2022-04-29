@@ -15,10 +15,19 @@ body {
   height: calc(var(--radius) * 2 + var(--stroke-width));
 }
 
-.spinner > circle {
+.spinner1 > circle {
   fill: transparent;
   stroke-width: var(--stroke-width);
   animation: colors calc(var(--duration) * 4) ease-in-out infinite;
+}
+
+.spinner2 > circle {
+  fill: transparent;
+  stroke-width: var(--stroke-width);
+  stroke-dasharray: var(--offset);
+  stroke-dashoffset: var(--offset);
+  animation: dash var(--duration) ease-in-out infinite,
+    colors calc(var(--duration) * 4) ease-in-out infinite;
 }
 
 @keyframes colors {
@@ -33,5 +42,17 @@ body {
   }
   100% {
     stroke: #3b82f6;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: var(--offset);
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: calc(var(--offset) * -1);
   }
 }
